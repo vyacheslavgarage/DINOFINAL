@@ -1,0 +1,43 @@
+﻿@model List<DINOFINAL.Models.GameResult>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лучшие результаты</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Топ 10 лучших результатов</h1>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>Место</th>
+                        <th>Результат</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@Model[i].Score</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Результатов пока нет</p>
+        }
+
+        <a class="btn btn-primary" href="/Game/Index">Вернуться к игре</a>
+    </div>
+</body>
+</html>
